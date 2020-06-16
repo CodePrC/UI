@@ -18,24 +18,28 @@ export class LineChartComponent extends ChartComponent {
   showXAxis = true;
   showYAxis = true;
   gradient = true;
-  showLegend = false;
+  showLegend = true;
   tooltipDisabled = false;
   showXAxisLabel = true;
-  showYAxisLabel = false;
+  showYAxisLabel = true;
   trimYAxisTicks = false;
-  timeline = false;
+  timeline = true;
+	view = [600,600];
+	barPadding = 8;
+	groupPadding  = 16;
   yAxisTickFormatting: (val: number) => string = this.formatInteger;
   xAxisTickFormatting: (val: Date) => string = this.formatToDayAndMonth;
 
   formatInteger(val: number): string {
-    if (Number.isInteger(val)) {
+    /*if (Number.isInteger(val)) {
       return val.toFixed(0);
-    }
-    return '';
+    }*/
+    return val;
   }
 
   formatToDayAndMonth(val: Date): string {
-    return (val.getMonth() + 1) + '/' + val.getDate();
+    //return (val.getMonth() + 1) + '/' + val.getDate();
+return val;
   }
 
   onSelect(event) {

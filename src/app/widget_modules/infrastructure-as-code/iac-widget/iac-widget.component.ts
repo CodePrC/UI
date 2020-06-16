@@ -8,7 +8,7 @@ import {
 	ViewChild,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription} from 'rxjs';
+import { Subscription, from} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormBuilder} from '@angular/forms';
 import { DashboardService } from 'src/app/shared/dashboard.service';
@@ -20,7 +20,8 @@ import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
 import { IACService } from '../iac.service';
 import { IAC_CHARTS } from './iac-charts';
 import {OneChartLayoutComponent} from '../../../shared/layouts/one-chart-layout/one-chart-layout.component';
-
+import { TwoByTwoLayoutComponent } from 'src/app/shared/layouts/two-by-two-layout/two-by-two-layout.component';
+import { interval, Observable} from 'rxjs';
 
 @Component({
 	selector: 'app-iac-widget',
@@ -33,6 +34,13 @@ export class IACWidgetComponent extends WidgetComponent implements OnInit, After
   // private intervalRefreshSubscription: Subscription;
   @ViewChild(LayoutDirective, {static: false}) childLayoutTag: LayoutDirective;
   private intervalRefreshSubscription: Subscription;
+
+// Refresh frequecy in ms, defaults to a min
+	frequency: number = 10000;
+
+	refresh: Observable<number>;
+
+	observer: Observable<any>;
 
   constructor(componentFactoryResolver: ComponentFactoryResolver,
               cdr: ChangeDetectorRef,
@@ -53,9 +61,12 @@ export class IACWidgetComponent extends WidgetComponent implements OnInit, After
 
   ngOnInit() {
     this.widgetId = 'iac0';
-    this.layout = OneChartLayoutComponent;
+    this.layout = TwoByTwoLayoutComponent;
     this.charts = IAC_CHARTS;
     this.init();
+		this.refresh = interval(this.frequency);
+		this.observer = this.refresh.pipe();
+
   }
 
   ngAfterViewInit() {
@@ -79,14 +90,64 @@ export class IACWidgetComponent extends WidgetComponent implements OnInit, After
     });
 
     this.populateNumberCardCharts();
+    this.populateLineCharts();
+    //this.populateBarCharts();
 
     super.loadComponent(this.childLayoutTag);
   }
 
   populateNumberCardCharts() {
-    this.charts[0].data[0].value = 1;
-    this.charts[0].data[1].value = 2;
-    this.charts[0].data[2].value = 999;
+	
+	
+		this.observer.subscribe(x => {
+			this.iacService._GetTerraformCardDetails().subscribe((result => {
+				this.stage = result.status,
+				this.data = result.data;
+			    
+				this.charts[1].data =this.data;
+				 super.loadComponent(this.childLayoutTag);
+				
+			})
+				, err => {
+					this.data = [];
+					this.stage = "ERROR";
+				}
+			);
+		});
+  }
+test = [];
+i = 1;
+j = 10;
+  populateLineCharts() {
+	
+	
+	
+		this.iacService.
+			_GetTerraformDetailAggregateRunRoute('', 'errored', 'WEEK', 4).subscribe(result => {
+				from(result.data).pipe().subscribe(d => {
+					let temp = { };
+			
+			
+			temp['name'] = d['name'];
+			temp['series'] = [
+      {
+        "value": this.i+=100,
+        "name": "2016-09-" + (this.j+=1) + ""
+      }];
+			
+			
+			this.test.push(temp); 
+			 
+			},
+			 err => {
+				
+			}, () => {
+				
+				this.charts[0].data['dataPoints']= this.test;
+				 //super.loadComponent(this.childLayoutTag);
+			});
+
+	});
   }
 
   stopRefreshInterval() {

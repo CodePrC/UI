@@ -87,21 +87,23 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
         widgetSize: 'col-xl-6',
         configForm: StaticAnalysisConfigFormComponent
       },*/
-      {
+      
+    
+{
         title: '',
         component: DockerWidgetComponent,
         status: 'Success',
         widgetSize: 'col-xl-12',
         configForm: DockerConfigFormComponent
       },
-/*      {
+ {
         title: 'Infrastructure As Code',
         component: IACWidgetComponent,
         status: 'Success',
-        widgetSize: 'col-xl-2',
+        widgetSize: 'col-xl-12',
         configForm: IACConfigFormComponent
-      }
-*/    ];
+      },
+    ];
   }
 
   ngAfterViewInit() {

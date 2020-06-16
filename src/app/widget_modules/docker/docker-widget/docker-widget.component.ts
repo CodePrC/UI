@@ -73,9 +73,9 @@ export class DockerWidgetComponent extends WidgetComponent implements OnInit, Af
 				this.widgetConfigSubject.next(result);
 			}
 		});
+		this.populateCPUStats();
 		this.populateNumberCardCharts();
 		this.populateMetaData();
-		this.populateCPUStats();
 		this.load();
 	}
 
@@ -138,7 +138,7 @@ export class DockerWidgetComponent extends WidgetComponent implements OnInit, Af
 					
 				})
 
-				this.charts[0].data = {'items' : conitems, clickableContent: DockerDetailComponent,  clickableHeader: null} as IClickListData;
+				//this.charts[0].data = {'items' : conitems, clickableContent: DockerDetailComponent,  clickableHeader: null} as IClickListData;
 				
 				i++;
 				// Containers End 
@@ -166,7 +166,7 @@ export class DockerWidgetComponent extends WidgetComponent implements OnInit, Af
 					
 				})
 
-				this.charts[1].data = {'items' : volitems, clickableContent: DockerDetailComponent,  clickableHeader: null} as IClickListData;
+				this.charts[2].data = {'items' : volitems, clickableContent: DockerDetailComponent,  clickableHeader: null} as IClickListData;
 				
 				i++;
 				// Volumes End 
@@ -196,7 +196,7 @@ export class DockerWidgetComponent extends WidgetComponent implements OnInit, Af
 					
 				})
 
-				this.charts[2].data = {'items' : netitems, clickableContent: DockerDetailComponent,  clickableHeader: null} as IClickListData;
+			//	this.charts[2].data = {'items' : netitems, clickableContent: DockerDetailComponent,  clickableHeader: null} as IClickListData;
 				
 			
 			data = result['processes'];
