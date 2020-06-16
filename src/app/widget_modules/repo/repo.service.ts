@@ -3,7 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IRepo, IRepoResponse} from './interfaces';
+import { IRepo, IRepoResponse, Showcase} from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class RepoService {
   repoIssueDetailRoute = '/api/gitrequests/type/issue/state/all/';
   repoPullDetailRoute = '/api/gitrequests/type/pull/state/all/';
   repoCommitDetailRoute = '/api/commit/';
+  showcaseRoute = '/api/git/showcase/';
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,11 @@ export class RepoService {
     return {
       params: new HttpParams().set('componentId', componentId).set('numberOfDays', numberOfDays.toFixed(0))
     };
+  }
+
+
+  fetchShowcase(): Observable<Showcase[]> {
+	return this.http.get<Showcase[]>(this.showcaseRoute);
   }
 
   fetchIssues(componentId: string, numberOfDays: number): Observable<IRepo[]> {

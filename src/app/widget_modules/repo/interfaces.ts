@@ -17,3 +17,17 @@ export interface IRepo {
   userId: string;
 }
 
+export interface IChart {
+    title: string,
+    component: null,
+    data: {} ,
+    xAxisLabel: '',
+    yAxisLabel: '',
+    colorScheme: 'vivid'
+}
+
+export interface Showcase {
+	title : string,
+	thumbnail: string,
+	shortDesc: string
+}

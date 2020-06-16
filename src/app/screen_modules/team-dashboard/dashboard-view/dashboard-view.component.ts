@@ -73,13 +73,7 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
         widgetSize: 'col-xl-2',
         configForm: DeployConfigFormComponent
       },
-      {
-        title: 'Repo',
-        component: RepoWidgetComponent,
-        status: 'Success',
-        widgetSize: 'col-xl-4',
-        configForm: RepoConfigFormComponent
-      },
+      
       {
         title: 'Static Code Analysis',
         component: StaticAnalysisWidgetComponent,
@@ -87,13 +81,13 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
         widgetSize: 'col-xl-6',
         configForm: StaticAnalysisConfigFormComponent
       },*/
-      {
+     /* {
         title: '',
-        component: GitWidgetComponent,
+        component: DockerWidgetComponent,
         status: 'Success',
         widgetSize: 'col-xl-12',
-        configForm: GitConfigFormComponent
-      },
+        configForm: DockerConfigFormComponent
+      },*/
 /*      {
         title: 'Infrastructure As Code',
         component: IACWidgetComponent,
@@ -101,7 +95,16 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
         widgetSize: 'col-xl-2',
         configForm: IACConfigFormComponent
       }
-*/    ];
+*/    
+	{
+        title: '101s',
+        component: RepoWidgetComponent,
+        status: 'Success',
+        widgetSize: 'col-xl-12',
+        configForm: RepoConfigFormComponent
+      },
+
+];
   }
 
   ngAfterViewInit() {

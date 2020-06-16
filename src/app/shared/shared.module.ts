@@ -48,6 +48,8 @@ import { RepoConfigFormComponent } from '../widget_modules/repo/repo-config-form
 import { RepoDetailComponent } from '../widget_modules/repo/repo-detail/repo-detail.component';
 import { RepoWidgetComponent } from '../widget_modules/repo/repo-widget/repo-widget.component';
 import { OneByTwoLayoutComponent } from './layouts/one-by-two-layout/one-by-two-layout.component';
+import { MultiShowcaseLayoutComponent } from './layouts/multi-showcase-layout/multi-showcase-layout.component';
+import { MultiContentLayoutComponent } from './layouts/multi-content-layout/multi-content-layout.component';
 import { FeatureConfigFormComponent } from '../widget_modules/feature/feature-config-form/feature-config-form.component';
 import { FeatureWidgetComponent } from '../widget_modules/feature/feature-widget/feature-widget.component';
 import {FeatureDetailComponent} from '../widget_modules/feature/feature-detail/feature-detail.component';
@@ -100,6 +102,8 @@ import {DockerDetailComponent} from '../widget_modules/docker/docker-detail/dock
     MinutesPipe,
     NumberCardChartComponent,
     OneByTwoLayoutComponent,
+    MultiShowcaseLayoutComponent,
+    MultiContentLayoutComponent,
     PaginationComponent,
     PieGridComponent,
     PieGridChartComponent,
@@ -156,6 +160,8 @@ DockerDetailComponent,
     NumberCardChartComponent,
     OneByTwoLayoutComponent,
     OneChartLayoutComponent,
+	MultiShowcaseLayoutComponent,
+    MultiContentLayoutComponent,
     PieGridComponent,
     PieGridChartComponent,
     PlaceholderWidgetComponent,
@@ -202,6 +208,8 @@ DockerDetailComponent,
     LineChartComponent,
     NumberCardChartComponent,
     OneByTwoLayoutComponent,
+	MultiShowcaseLayoutComponent,
+    MultiContentLayoutComponent,
     PaginationComponent,
     PieGridComponent,
     PieGridChartComponent,
