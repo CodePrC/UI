@@ -27,17 +27,17 @@ export class LineChartComponent extends ChartComponent {
 	view = [600,600];
 	barPadding = 8;
 	groupPadding  = 16;
-  yAxisTickFormatting: (val: number) => string = this.formatInteger;
-  xAxisTickFormatting: (val: Date) => string = this.formatToDayAndMonth;
+  yAxisTickFormatting: (val: number) => number = this.formatInteger;
+  xAxisTickFormatting: (val: Date) => Date = this.formatToDayAndMonth;
 
-  formatInteger(val: number): string {
+  formatInteger(val: number): number{
     /*if (Number.isInteger(val)) {
       return val.toFixed(0);
     }*/
     return val;
   }
 
-  formatToDayAndMonth(val: Date): string {
+  formatToDayAndMonth(val: Date): Date {
     //return (val.getMonth() + 1) + '/' + val.getDate();
 return val;
   }

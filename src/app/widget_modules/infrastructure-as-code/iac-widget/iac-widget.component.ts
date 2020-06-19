@@ -19,7 +19,6 @@ import { CollectorService } from 'src/app/shared/collector.service';
 import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
 import { IACService } from '../iac.service';
 import { IAC_CHARTS } from './iac-charts';
-import {OneChartLayoutComponent} from '../../../shared/layouts/one-chart-layout/one-chart-layout.component';
 import { TwoByTwoLayoutComponent } from 'src/app/shared/layouts/two-by-two-layout/two-by-two-layout.component';
 import { interval, Observable} from 'rxjs';
 
@@ -101,16 +100,12 @@ export class IACWidgetComponent extends WidgetComponent implements OnInit, After
 	
 		this.observer.subscribe(x => {
 			this.iacService._GetTerraformCardDetails().subscribe((result => {
-				this.stage = result.status,
-				this.data = result.data;
 			    
-				this.charts[1].data =this.data;
+				this.charts[1].data =result.data;
 				 super.loadComponent(this.childLayoutTag);
 				
 			})
 				, err => {
-					this.data = [];
-					this.stage = "ERROR";
 				}
 			);
 		});
@@ -133,6 +128,25 @@ j = 10;
       {
         "value": this.i+=100,
         "name": "2016-09-" + (this.j+=1) + ""
+      },
+{
+        "value": this.i+=100,
+        "name": "2016-09-" + (this.j+=1) + ""
+      },{
+        "value": this.i+=100,
+        "name": "2016-09-" + (this.j+=1) + ""
+      },{
+        "value": this.i+=100,
+        "name": "2016-09-" + (this.j+=1) + ""
+      },{
+        "value": this.i+=100,
+        "name": "2016-09-" + (this.j+=1) + ""
+      },{
+        "value": this.i+=100,
+        "name": "2016-09-" + (this.j+=1) + ""
+      },{
+        "value": this.i+=100,
+        "name": "2016-09-" + (this.j+=1) + ""
       }];
 			
 			
@@ -144,6 +158,7 @@ j = 10;
 			}, () => {
 				
 				this.charts[0].data['dataPoints']= this.test;
+				this.charts[0].data['areaChart']= true;
 				 //super.loadComponent(this.childLayoutTag);
 			});
 
