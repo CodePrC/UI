@@ -21,6 +21,7 @@ import {CollectorService} from '../../../shared/collector.service';
 import moment from 'moment';
 import * as _ from 'lodash';
 import {OneByTwoLayoutComponent} from '../../../shared/layouts/one-by-two-layout/one-by-two-layout.component';
+import { TwoByTwoLayoutComponent } from 'src/app/shared/layouts/two-by-two-layout/two-by-two-layout.component';
 
 @Component({
   selector: 'app-repo-widget',
@@ -47,7 +48,7 @@ export class RepoWidgetComponent extends WidgetComponent implements OnInit, Afte
   // Initialize the widget and set layout and charts.
   ngOnInit() {
     this.widgetId = 'repo0';
-    this.layout = OneByTwoLayoutComponent;
+    this.layout = TwoByTwoLayoutComponent;
     this.charts = REPO_CHARTS;
     this.init();
   }
