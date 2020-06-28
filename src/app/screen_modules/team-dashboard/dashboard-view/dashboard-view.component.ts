@@ -56,7 +56,7 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
 				title: 'Feature',
 				component: FeatureWidgetComponent,
 				status: 'Success',
-				widgetSize: 'col-xl-4',
+				widgetSize: 'col-xl-12',
 				configForm: FeatureConfigFormComponent
 			  },
 			 
@@ -64,7 +64,7 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
 				title: 'Deploy',
 				component: DeployWidgetComponent,
 				status: 'Success',
-				widgetSize: 'col-xl-2',
+				widgetSize: 'col-md-2',
 				configForm: DeployConfigFormComponent
 			  },
 			 
@@ -72,7 +72,7 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
 				title: 'Static Code Analysis',
 				component: StaticAnalysisWidgetComponent,
 				status: 'Success',
-				widgetSize: 'col-xl-6',
+				widgetSize: 'col-xl-12',
 				configForm: StaticAnalysisConfigFormComponent
 			  },*/
 			{

@@ -28,6 +28,9 @@ export class IACService {
   // URL for CollectorItem by ComponentId
   private collectorByComponentIdRoute: string = '/api/collector/item/component/';
 
+  // URL for CollectorItem by ComponentId
+  private terraformTrendRoute: string = '/api/collector/terraform/trend';
+
 
   constructor(private http: HttpClient) { }
 
@@ -46,6 +49,11 @@ export class IACService {
   // REST for full organization, workspace and job details
   _GetTerraformCardDetails: any = function(): Observable<any> {
 	return this.http.get(this.terraformCardRoute);
+  }
+
+  // REST for full organization, workspace and job details
+  _GetTerraformTrendDetails: any = function(): Observable<any> {
+	return this.http.get(this.terraformTrendRoute);
   }
 
   _GetTerraformDetailCountRunRoute: any  = function(workspace, status, timeline, range): Observable<any> {

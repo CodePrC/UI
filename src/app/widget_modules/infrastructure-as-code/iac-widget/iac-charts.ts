@@ -8,17 +8,7 @@ import { LineChartComponent } from 'src/app/shared/charts/line-chart/line-chart.
 
 
 export let IAC_CHARTS: IChart[] = [
-  
  
-  
-  {
-    title: 'Workspace Details',
-    component: LineChartComponent,
-    data: [],
-    yAxisLabel: 'Count->',
-    xAxisLabel: 'TimeLine->',
-    colorScheme: 'vivid'
-  },
  {
     title: 'Meta Count',
     component: NumberCardChartComponent,
@@ -27,4 +17,25 @@ export let IAC_CHARTS: IChart[] = [
     yAxisLabel: '',
     colorScheme: 'vivid'
   },
+
+{
+    title: 'Terraform Trend',
+    component: LineChartComponent,
+    data: {
+      areaChart: true,
+      dataPoints: []} as ILineChartData,
+    yAxisLabel: 'Count',
+    xAxisLabel: '',
+    colorScheme: 'vivid'
+  },
+ {
+	
+    title: 'Terraform Details',
+    component: ClickListComponent,
+    data: {},
+    yAxisLabel: '',
+    xAxisLabel: '',
+    colorScheme: {}
+  },
+ 
 ];

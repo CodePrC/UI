@@ -7,11 +7,12 @@ import { IACConfigFormComponent } from './iac-config-form/iac-config-form.compon
 import { IACRoutingModule } from './iac-routing-module';
 import { IACWidgetComponent } from './iac-widget/iac-widget.component';
 import { IACMasterComponent } from './iac-master/iac-master.component'
+import { IACDetailComponent } from './iac-detail/iac-detail.component'
 import { Terraform } from './iac-master/iac-terraform';
 
 @NgModule({
-	  declarations: [IACWidgetComponent, IACConfigFormComponent, IACMasterComponent, Terraform],
-  entryComponents: [IACConfigFormComponent, IACMasterComponent],
+	  declarations: [IACWidgetComponent, IACConfigFormComponent, IACMasterComponent, IACDetailComponent, Terraform],
+  entryComponents: [IACConfigFormComponent, IACMasterComponent, IACDetailComponent],
   imports: [
     IACRoutingModule,
     CommonModule,

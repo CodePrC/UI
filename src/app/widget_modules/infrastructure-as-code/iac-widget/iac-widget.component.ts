@@ -21,7 +21,12 @@ import { IACService } from '../iac.service';
 import { IAC_CHARTS } from './iac-charts';
 import { TwoByTwoLayoutComponent } from 'src/app/shared/layouts/two-by-two-layout/two-by-two-layout.component';
 import { interval, Observable} from 'rxjs';
+import { IClickListIACItem } from '../iac-detail/IClickListIACItem';
+import { DashStatus } from 'src/app/shared/dash-status/DashStatus';
+import { IACDetailComponent } from '../iac-detail/iac-detail.component';
+import { IClickListData, IClickListItem } from 'src/app/shared/charts/click-list/click-list-interfaces';
 
+import { OneByTwoLayoutComponent } from '../../../shared/layouts/one-by-two-layout/one-by-two-layout.component';
 @Component({
 	selector: 'app-iac-widget',
 	templateUrl: './iac-widget.component.html',
@@ -35,7 +40,7 @@ export class IACWidgetComponent extends WidgetComponent implements OnInit, After
   private intervalRefreshSubscription: Subscription;
 
 // Refresh frequecy in ms, defaults to a min
-	frequency: number = 10000;
+	frequency: number = 100000;
 
 	refresh: Observable<number>;
 
@@ -68,6 +73,9 @@ export class IACWidgetComponent extends WidgetComponent implements OnInit, After
 
   }
 
+load() {
+		super.loadComponent(this.childLayoutTag);
+	}
   ngAfterViewInit() {
     this.startRefreshInterval();
   }
@@ -87,83 +95,95 @@ export class IACWidgetComponent extends WidgetComponent implements OnInit, After
         this.widgetConfigSubject.next(result);
       }
     });
-
+interval(10000).subscribe((x => {
     this.populateNumberCardCharts();
-    this.populateLineCharts();
-    //this.populateBarCharts();
+    this.populateTerraformDetails();
+    this.populateTerraformTrend();
+this.load();
+   
+}),  err => console.log('HTTP Error', err) );
+  () => {}}
 
-    super.loadComponent(this.childLayoutTag);
-  }
+	
 
   populateNumberCardCharts() {
 	
 	
-		this.observer.subscribe(x => {
+	
+	
+		
 			this.iacService._GetTerraformCardDetails().subscribe((result => {
-			    
-				this.charts[1].data =result.data;
-				 super.loadComponent(this.childLayoutTag);
+				this.charts[0].data =result.data;
 				
 			})
 				, err => {
 				}
 			);
-		});
+		
+ 
+		
+  }
+  populateTerraformTrend() {
+		
+			this.iacService._GetTerraformTrendDetails().subscribe((result=> {
+				
+				result = result.data;
+				
+					this.charts[1].data['dataPoints'] = result;
+			
+					
+				 
+				
+				
+				
+				
+				
+			})
+				, err => {
+				}
+			);
+		
   }
 test = [];
 i = 1;
 j = 10;
-  populateLineCharts() {
+  populateTerraformDetails() {
 	
 	
-	
-		this.iacService.
-			_GetTerraformDetailAggregateRunRoute('', 'errored', 'WEEK', 4).subscribe(result => {
-				from(result.data).pipe().subscribe(d => {
-					let temp = { };
-			
-			
-			temp['name'] = d['name'];
-			temp['series'] = [
-      {
-        "value": this.i+=100,
-        "name": "2016-09-" + (this.j+=1) + ""
-      },
-{
-        "value": this.i+=100,
-        "name": "2016-09-" + (this.j+=1) + ""
-      },{
-        "value": this.i+=100,
-        "name": "2016-09-" + (this.j+=1) + ""
-      },{
-        "value": this.i+=100,
-        "name": "2016-09-" + (this.j+=1) + ""
-      },{
-        "value": this.i+=100,
-        "name": "2016-09-" + (this.j+=1) + ""
-      },{
-        "value": this.i+=100,
-        "name": "2016-09-" + (this.j+=1) + ""
-      },{
-        "value": this.i+=100,
-        "name": "2016-09-" + (this.j+=1) + ""
-      }];
-			
-			
-			this.test.push(temp); 
-			 
-			},
-			 err => {
+			this.iacService._GetTerraformDetails().subscribe((result => {
+			    
+				result =result.data;
 				
-			}, () => {
-				
-				this.charts[0].data['dataPoints']= this.test;
-				this.charts[0].data['areaChart']= true;
-				 //super.loadComponent(this.childLayoutTag);
-			});
+				console.log(result);
 
-	});
-  }
+			let orgList = result['orgList'];
+
+			let orgitems = [];
+
+			from(orgList).subscribe(data => {
+
+				let obj = {
+					status: DashStatus.PASS,
+					title:  data['name'],
+					subtitles: null,
+					workspaces: data['workSpaceList']
+
+				} as IClickListIACItem;
+
+				orgitems.push(obj);
+
+			})
+
+			this.charts[2].data = {'items' : orgitems, clickableContent: IACDetailComponent,  clickableHeader: null} as IClickListData;
+				
+				
+			})
+				, err => {} , 
+				
+				
+			);
+
+}
 
   stopRefreshInterval() {
     if (this.intervalRefreshSubscription) {

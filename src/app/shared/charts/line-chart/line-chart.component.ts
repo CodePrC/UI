@@ -15,13 +15,13 @@ export class LineChartComponent extends ChartComponent {
     super();
   }
   // options
-  showXAxis = true;
+  showXAxis = false;
   showYAxis = true;
   gradient = true;
   showLegend = true;
   tooltipDisabled = false;
-  showXAxisLabel = true;
-  showYAxisLabel = true;
+  showXAxisLabel = false;
+  showYAxisLabel = false;
   trimYAxisTicks = false;
   timeline = true;
 	view = [600,600];

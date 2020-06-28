@@ -26,7 +26,7 @@ export class BuildConfigFormComponent implements OnInit {
       return '';
     }
     const description = (collectorItem.description as string);
-    return collectorItem.niceName + ' : ' + description;
+    return/* collectorItem.niceName + ' : ' + */description; // collectroitem nicenme is required
   }
 
   @Input()

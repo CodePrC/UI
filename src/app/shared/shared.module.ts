@@ -66,6 +66,7 @@ import { IACMasterComponent } from '../widget_modules/infrastructure-as-code/iac
 import { IACCardComponent } from '../widget_modules/infrastructure-as-code/iac-card/iac-card.component';
 import { IACStatusBarChartComponent } from '../widget_modules/infrastructure-as-code/iac-status-bar-chart/iac-status-bar-chart.component';
 import { IACStatusLineChartComponent } from '../widget_modules/infrastructure-as-code/iac-status-line-chart/iac-status-line-chart.component';
+import { IACDetailComponent } from '../widget_modules/infrastructure-as-code/iac-detail/iac-detail.component';
 import {DockerConfigFormComponent} from '../widget_modules/docker/docker-config-form/docker-config-form.component';
 import {DockerWidgetComponent} from '../widget_modules/docker/docker-widget/docker-widget.component';
 import {DockerDetailComponent} from '../widget_modules/docker/docker-detail/docker-detail.component';
@@ -130,7 +131,8 @@ DockerDetailComponent,
     IACMasterComponent,
     IACCardComponent,
     IACStatusBarChartComponent,
-    IACStatusLineChartComponent
+    IACStatusLineChartComponent,
+    IACDetailComponent
   ],
   entryComponents: [
     DeployDetailComponent,
@@ -175,7 +177,8 @@ DockerDetailComponent,
     IACMasterComponent,
     IACCardComponent,
     IACStatusBarChartComponent,
-    IACStatusLineChartComponent
+    IACStatusLineChartComponent,
+    IACDetailComponent
   ],
   imports: [
     CommonModule,

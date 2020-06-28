@@ -40,25 +40,6 @@ export let DOCKER_CHARTS: IChart[] = [
     colorScheme: {}
   },
  {
-  title: 'Process Details',
-  component: ClickListComponent,
-  data:{},
-
-    xAxisLabel: '',
-    yAxisLabel: '',
-    colorScheme: {}
-  },
-/* {
-  title: 'Networks Details',
-  component: ClickListComponent,
-  data:{},
-
-    xAxisLabel: '',
-    yAxisLabel: '',
-    colorScheme: {}
-  },
-
- {
   title: 'Container Details',
   component: ClickListComponent,
   data:{},
@@ -68,7 +49,27 @@ export let DOCKER_CHARTS: IChart[] = [
     colorScheme: {}
   },
 
-*/ 
+ {
+  title: 'Process Details',
+  component: ClickListComponent,
+  data:{},
+
+    xAxisLabel: '',
+    yAxisLabel: '',
+    colorScheme: {}
+  },
+ {
+  title: 'Networks Details',
+  component: ClickListComponent,
+  data:{},
+
+    xAxisLabel: '',
+    yAxisLabel: '',
+    colorScheme: {}
+  },
+
+
+ 
   	
   
 ];

@@ -17,7 +17,7 @@ export class GaugeChartComponent extends ChartComponent {
   }
 
   formatAppendPercent(val: number): string {
-    return val + '%';
+    return (val/1000000).toFixed(2) + "";
   }
 
 }
