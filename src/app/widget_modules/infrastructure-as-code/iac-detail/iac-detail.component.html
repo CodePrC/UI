@@ -1,0 +1,42 @@
+<div class="widget dark-chart-theme">
+
+<div class="widget-body">
+   
+  <table *ngFor="let item of data?.workspaces">
+  <tr>
+      <th>Workspace ID </th> 
+      <th>Workspace </th>
+      <th>Date-Created </th> 
+    </tr>  
+    
+    <tr>
+    	<td>{{item?.workspaceId}}</td>
+    	<td>{{item?.name}}</td>
+    	<td>{{item?.createdAt | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+    </tr>
+    <ng-container *ngFor="let run of item.runList">
+    
+    
+     <tr>
+      <th>   </th> 
+      <th>Job ID </th> 
+      <th>Status </th>
+      <th>Date-Created </th> 
+    </tr>  
+ 
+     <tr>
+      <td>   </td> 
+      <td>{{run?.runId}}</td> 
+      <td>{{run?.status}}</td>
+      <td>{{run?.createdAt | date:'dd/MM/yyyy hh:mm:ss'}} </td> 
+    </tr>  
+    
+     </ng-container>
+  </table>
+  
+  
+  
+  
+ 
+</div>
+</div>
