@@ -25,6 +25,9 @@ import {IACConfigFormComponent} from '../../../widget_modules/infrastructure-as-
 import {IACWidgetComponent} from '../../../widget_modules/infrastructure-as-code/iac-widget/iac-widget.component';
 import {DockerConfigFormComponent} from '../../../widget_modules/docker/docker-config-form/docker-config-form.component';
 import {DockerWidgetComponent} from '../../../widget_modules/docker/docker-widget/docker-widget.component';
+=======
+import { widgetsAll } from './dashboard-view';
+import {IWidget} from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-dashboard-view',
@@ -33,8 +36,10 @@ import {DockerWidgetComponent} from '../../../widget_modules/docker/docker-widge
 })
 export class DashboardViewComponent extends DashboardComponent implements OnInit, AfterViewInit {
 
-  teamDashboard: ITemplate;
+  @Output() title = new EventEmitter(true);
+  dashboardTitle = '';
   dashboardId: string;
+  widgetsAll: IWidget[] = widgetsAll;
   @ViewChild(TemplatesDirective, {static: false}) childTemplateTag: TemplatesDirective;
 
   constructor(componentFactoryResolver: ComponentFactoryResolver,
@@ -48,7 +53,6 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
     this.dashboardService.clearDashboard();
     this.dashboardId = this.route.snapshot.paramMap.get('id');
     this.dashboardService.loadDashboard(this.dashboardId);
-
     this.baseTemplate = CaponeTemplateComponent;
 
     this.widgets = [
@@ -105,11 +109,31 @@ export class DashboardViewComponent extends DashboardComponent implements OnInit
       },
 
 ];
-  }
 
   ngAfterViewInit() {
-    super.loadComponent(this.childTemplateTag);
+    this.loadWidgets();
   }
 
-}
+  private loadWidgets() {
+    this.dashboardService.dashboardConfig$.subscribe(dashboard => {
+      this.dashboardTitle = [dashboard.title, dashboard.configurationItemBusAppName, dashboard.configurationItemBusServName]
+        .filter(Boolean).join(' - ');
 
+      const activeWidgets = new Set<string>();
+      dashboard.widgets.forEach(widget => activeWidgets.add(widget.name));
+      if (dashboard.activeWidgets && dashboard.activeWidgets.length) {
+        dashboard.activeWidgets.forEach(wName => activeWidgets.add(wName));
+      }
+      const widgets: IWidget[] = [];
+      activeWidgets.forEach(widgetName => {
+        const fWidget = this.widgetsAll.find(widget =>
+          widget.title.join().toLowerCase().replace(/\s/g, '').includes(widgetName));
+        if (fWidget) {
+          widgets.push(fWidget);
+        }
+      });
+      this.widgets = widgets;
+      super.loadComponent(this.childTemplateTag);
+    });
+  }
+}

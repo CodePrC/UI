@@ -53,29 +53,54 @@ import { MultiContentLayoutComponent } from './layouts/multi-content-layout/mult
 import { FeatureConfigFormComponent } from '../widget_modules/feature/feature-config-form/feature-config-form.component';
 import { FeatureWidgetComponent } from '../widget_modules/feature/feature-widget/feature-widget.component';
 import {FeatureDetailComponent} from '../widget_modules/feature/feature-detail/feature-detail.component';
-import {
-  StaticAnalysisConfigFormComponent
 } from '../widget_modules/static-analysis/static-anaylsis-config-form/static-analysis-config-form.component';
 import {StaticAnalysisDetailComponent} from '../widget_modules/static-analysis/static-analysis-detail/static-analysis-detail.component';
 import {StaticAnalysisWidgetComponent} from '../widget_modules/static-analysis/static-analysis-widget/static-analysis-widget.component';
+import {SecurityScanConfigComponent} from '../widget_modules/security-scan/security-scan-config/security-scan-config.component';
+import {SecurityScanWidgetComponent} from '../widget_modules/security-scan/security-scan-widget/security-scan-widget.component';
 import { HorizontalBarChartComponent } from './charts/horizontal-bar-chart/horizontal-bar-chart.component';
 import {BarHorizontalComponent} from './ngx-charts/bar-horizontal/bar-horizontal.component';
 import {PieGridChartComponent} from './charts/pie-grid-chart/pie-grid-chart.component';
 import {PieGridComponent} from './ngx-charts/pie-grid/pie-grid.component';
-import { IACConfigFormComponent } from '../widget_modules/infrastructure-as-code/iac-config-form/iac-config-form.component';
-import { IACWidgetComponent } from '../widget_modules/infrastructure-as-code/iac-widget/iac-widget.component';
-import { IACMasterComponent } from '../widget_modules/infrastructure-as-code/iac-master/iac-master.component';
-import { IACCardComponent } from '../widget_modules/infrastructure-as-code/iac-card/iac-card.component';
-import { IACStatusBarChartComponent } from '../widget_modules/infrastructure-as-code/iac-status-bar-chart/iac-status-bar-chart.component';
-import { IACStatusLineChartComponent } from '../widget_modules/infrastructure-as-code/iac-status-line-chart/iac-status-line-chart.component';
-import {DockerConfigFormComponent} from '../widget_modules/docker/docker-config-form/docker-config-form.component';
-import {DockerWidgetComponent} from '../widget_modules/docker/docker-widget/docker-widget.component';
-import {DockerDetailComponent} from '../widget_modules/docker/docker-detail/docker-detail.component';
+import { AuditModalComponent } from './modals/audit-modal/audit-modal.component';
+import {OSSWidgetComponent} from '../widget_modules/opensource-scan/oss-widget/oss-widget.component';
+import {OSSDetailComponent} from '../widget_modules/opensource-scan/oss-detail/oss-detail.component';
+import { TwoByOneLayoutComponent } from './layouts/two-by-one-layout/two-by-one-layout.component';
+import {OSSConfigFormComponent} from '../widget_modules/opensource-scan/oss-config-form/oss-config-form.component';
+import {OSSDetailAllComponent} from '../widget_modules/opensource-scan/oss-detail-all/oss-detail-all.component';
+import { TestConfigFormComponent } from '../widget_modules/test/test-config-form/test-config-form.component';
+import { TestDetailComponent } from '../widget_modules/test/test-detail/test-detail.component';
+import { TestWidgetComponent } from '../widget_modules/test/test-widget/test-widget.component';
+import {DeleteConfirmModalComponent} from './modals/delete-confirm-modal/delete-confirm-modal.component';
+import {TabsModule} from './ngx-ui/tabs/tabs.module';
+// tslint:disable-next-line:max-line-length
+import {OneByTwoLayoutTableChartComponent} from './layouts/one-by-two-layout-table-chart/one-by-two-layout-table-chart.component';
+import { NavbarComponent } from '../core/navbar/navbar.component';
+import {RouterModule} from '@angular/router';
+import {BuildDeleteFormComponent} from '../widget_modules/build/build-delete-form/build-delete-form.component';
+import {DeleteConfirmModalDirective} from './modals/delete-confirm-modal/delete-confirm-modal.directive';
+import {DeployDeleteFormComponent} from '../widget_modules/deploy/deploy-delete-form/deploy-delete-form.component';
+import {FeatureDeleteFormComponent} from '../widget_modules/feature/feature-delete-form/feature-delete-form.component';
+import {RepoDeleteFormComponent} from '../widget_modules/repo/repo-delete-form/repo-delete-form.component';
+import {OSSDeleteFormComponent} from '../widget_modules/opensource-scan/oss-delete-form/oss-delete-form.component';
+import {
+  SecurityScanDeleteFormComponent
+} from '../widget_modules/security-scan/security-scan-delete-form/security-scan-delete-form.component';
+import {
+  StaticAnalysisDeleteFormComponent
+} from '../widget_modules/static-analysis/static-analysis-delete-form/static-analysis-delete-form.component';
+import {TestDeleteFormComponent} from '../widget_modules/test/test-delete-form/test-delete-form.component';
+import {RotationChartComponent} from './charts/rotation/rotation-chart.component';
+import {NbActionsModule, NbCardModule, NbSearchModule, NbTabsetModule, NbUserModule} from '@nebular/theme';
+
+>>>>>>> a35b696107ab460b8e921a0fe093b708682b4abe
 @NgModule({
   declarations: [
     DeployConfigFormComponent,
+    DeployDeleteFormComponent,
     BarHorizontalComponent,
     BaseTemplateComponent,
+    BuildDeleteFormComponent,
     BuildConfigFormComponent,
     BuildDetailComponent,
     BuildWidgetComponent,
@@ -87,9 +112,12 @@ import {DockerDetailComponent} from '../widget_modules/docker/docker-detail/dock
     ComboSeriesVerticalComponent,
     ConfirmationModalComponent,
     DashboardComponent,
+    DeleteConfirmModalComponent,
+    DeleteConfirmModalDirective,
     DetailModalComponent,
     DetailModalDirective,
     FeatureConfigFormComponent,
+    FeatureDeleteFormComponent,
     FeatureDetailComponent,
     FeatureWidgetComponent,
     FormModalComponent,
@@ -104,13 +132,16 @@ import {DockerDetailComponent} from '../widget_modules/docker/docker-detail/dock
     OneByTwoLayoutComponent,
     MultiShowcaseLayoutComponent,
     MultiContentLayoutComponent,
+    OneByTwoLayoutTableChartComponent,
     PaginationComponent,
     PieGridComponent,
     PieGridChartComponent,
     PlaceholderWidgetComponent,
     RepoConfigFormComponent,
+    RepoDeleteFormComponent,
     RepoDetailComponent,
     RepoWidgetComponent,
+    RotationChartComponent,
     TemplatesDirective,
     TimeAgoPipe,
     TwoByTwoLayoutComponent,
@@ -121,26 +152,37 @@ import {DockerDetailComponent} from '../widget_modules/docker/docker-detail/dock
     PlainTextChartComponent,
     DeployDetailComponent,
     DeployWidgetComponent,
+    TwoByOneLayoutComponent,
+    OSSWidgetComponent,
+    OSSDetailComponent,
+    OSSDetailAllComponent,
+    OSSConfigFormComponent,
+    OSSDeleteFormComponent,
     OneChartLayoutComponent,
     GaugeChartComponent,
     StaticAnalysisConfigFormComponent,
+    StaticAnalysisDeleteFormComponent,
     StaticAnalysisDetailComponent,
     StaticAnalysisWidgetComponent,
-    	IACConfigFormComponent,
-    IACWidgetComponent,
-    	DockerConfigFormComponent,
-    DockerWidgetComponent,
-DockerDetailComponent,
-    IACMasterComponent,
-    IACCardComponent,
-    IACStatusBarChartComponent,
-    IACStatusLineChartComponent
+    TestConfigFormComponent,
+    TestDeleteFormComponent,
+    TestDetailComponent,
+    TestWidgetComponent,
+    SecurityScanConfigComponent,
+    SecurityScanDeleteFormComponent,
+    SecurityScanWidgetComponent,
+    AuditModalComponent,
+    TwoByOneLayoutComponent,
+    NavbarComponent
   ],
   entryComponents: [
+    DeleteConfirmModalComponent,
     DeployDetailComponent,
     DeployWidgetComponent,
     DeployConfigFormComponent,
+    DeployDeleteFormComponent,
     BarHorizontalComponent,
+    BuildDeleteFormComponent,
     BuildConfigFormComponent,
     BuildDetailComponent,
     BuildWidgetComponent,
@@ -148,8 +190,10 @@ DockerDetailComponent,
     ClickListComponent,
     ComboChartComponent,
     ConfirmationModalComponent,
+    DeleteConfirmModalComponent,
     DetailModalComponent,
     FeatureConfigFormComponent,
+    FeatureDeleteFormComponent,
     FeatureDetailComponent,
     FeatureWidgetComponent,
     FormModalComponent,
@@ -159,6 +203,7 @@ DockerDetailComponent,
     LineChartComponent,
     NumberCardChartComponent,
     OneByTwoLayoutComponent,
+    OneByTwoLayoutTableChartComponent,
     OneChartLayoutComponent,
 	MultiShowcaseLayoutComponent,
     MultiContentLayoutComponent,
@@ -166,22 +211,31 @@ DockerDetailComponent,
     PieGridChartComponent,
     PlaceholderWidgetComponent,
     PlainTextChartComponent,
+    TwoByOneLayoutComponent,
+    OSSWidgetComponent,
+    OSSDetailComponent,
+    OSSDetailAllComponent,
+    OSSConfigFormComponent,
+    OSSDeleteFormComponent,
     RepoDetailComponent,
     RepoWidgetComponent,
     RepoConfigFormComponent,
+    RepoDeleteFormComponent,
+    RotationChartComponent,
     TwoByTwoLayoutComponent,
     StaticAnalysisConfigFormComponent,
+    StaticAnalysisDeleteFormComponent,
     StaticAnalysisDetailComponent,
     StaticAnalysisWidgetComponent,
-    	IACConfigFormComponent,
-    IACWidgetComponent,
-    	DockerConfigFormComponent,
-DockerDetailComponent,
-    DockerWidgetComponent,
-    IACMasterComponent,
-    IACCardComponent,
-    IACStatusBarChartComponent,
-    IACStatusLineChartComponent
+    TwoByTwoLayoutComponent,
+    TestConfigFormComponent,
+    TestDeleteFormComponent,
+    TestDetailComponent,
+    TestWidgetComponent,
+    SecurityScanConfigComponent,
+    SecurityScanDeleteFormComponent,
+    SecurityScanWidgetComponent,
+    AuditModalComponent
   ],
   imports: [
     CommonModule,
@@ -190,7 +244,14 @@ DockerDetailComponent,
     NgbModule,
     NgxChartsModule,
     NgxUIModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabsModule,
+    RouterModule,
+    NbActionsModule,
+    NbUserModule,
+    NbSearchModule,
+    NbCardModule,
+    NbTabsetModule,
   ],
   exports: [
     BarHorizontalComponent,
@@ -210,16 +271,22 @@ DockerDetailComponent,
     OneByTwoLayoutComponent,
 	MultiShowcaseLayoutComponent,
     MultiContentLayoutComponent,
+    OneByTwoLayoutTableChartComponent,
     PaginationComponent,
     PieGridComponent,
     PieGridChartComponent,
     ReactiveFormsModule,
+    RotationChartComponent,
     TemplatesDirective,
     TwoByTwoLayoutComponent,
+    TwoByOneLayoutComponent,
     WidgetComponent,
     WidgetDirective,
     WidgetHeaderComponent,
-    GaugeChartComponent
+    GaugeChartComponent,
+    SecurityScanConfigComponent,
+    SecurityScanWidgetComponent,
+    NavbarComponent
   ]
 })
 export class SharedModule { }
