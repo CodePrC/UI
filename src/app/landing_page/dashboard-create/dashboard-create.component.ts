@@ -45,7 +45,7 @@ export class DashboardCreateComponent implements OnInit {
   createErrorMsg: string;
   dType = 'Team';
   dLayout = 'Widgets';
-  widgetNames: Array<string> = ['feature', 'build', 'repo', 'codeanalysis', 'deploy'];
+  widgetNames: Array<string> = ['feature', 'build', 'repo', 'codeanalysis', 'deploy', 'blog'];
   templateNames: Array<string> = ['CapOne'];
   widgets: Widget[] = [];
   templates: DTemplate[] = [];

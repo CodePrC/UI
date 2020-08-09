@@ -1,1 +1,11 @@
 <ng-template appLayout></ng-template>
+
+<div class="container">
+  <ul class="step-menu">
+    <li role="button" #dev (click)="change(dev)">DEV</li>
+    <li role="button" class="noclass">QA</li>
+    <li role="button">INT</li>
+    <li role="button">PERF</li>
+    <li role="button">PROD</li>
+  </ul>
+</div>

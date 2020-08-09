@@ -305,4 +305,11 @@ export class BuildWidgetComponent extends WidgetComponent implements OnInit, Aft
     }
     super.loadComponent(this.childLayoutTag);
   }
+
+
+change(e)  
+{
+	console.log(e);
+}
+
 }
