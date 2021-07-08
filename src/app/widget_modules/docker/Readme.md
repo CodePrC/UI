@@ -14,6 +14,10 @@ For Docker widget to appear, it has to be included in dasboard.view.component.ts
 The Docker widget must also be included in the shared.module as entryComponents
 
 
+Doker.PNG![Doker](https://user-images.githubusercontent.com/11367273/124895008-c8952380-dff9-11eb-8b9a-1b89c51b39bf.PNG)
+
+
+
 
 
 
